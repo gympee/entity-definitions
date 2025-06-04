@@ -3,7 +3,7 @@ cpuUtilization:
   unit: PERCENTAGE
   queries:
     kentik:
-      select: latest(vaApplHealth.cpuload)
+      select: vaApplHealth.cpuload # does this need average()? latest() seems problematic - https://github.com/gympee/entity-definitions/blob/main/docs/entities/golden_metrics.md#further-explanation
       from: VersaApplHealthSample
 
 memoryUtilization:
@@ -11,7 +11,7 @@ memoryUtilization:
   unit: PERCENTAGE
   queries:
     kentik:
-      select: latest(vaApplHealth.memload)
+      select: vaApplHealth.memload
       from: VersaApplHealthSample
 
 # assumes an update to Nordstrom Versa SNMP profile to include activeSessions
@@ -21,5 +21,5 @@ deviceActiveSessions:
   queries:
     # Versa devices from Kentik (ktranslate)
     kentik/versa: # how/where is this defined?
-      select: latest(vaApplHealth.sessload)
+      select: vaApplHealth.sessload
       from: VersaApplHealthSample
