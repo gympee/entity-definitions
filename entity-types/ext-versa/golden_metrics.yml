@@ -1,0 +1,28 @@
+cpuUtilization:
+  title: CPU utilization (%)
+  unit: PERCENTAGE
+  queries:
+    kentik:
+      select: average(kentik.snmp.CPU)
+      from: Metric
+      where: "provider = 'kentik-versa'"
+
+memoryUtilization:
+  title: Memory utilization (%)
+  unit: PERCENTAGE
+  queries:
+    kentik:
+      select: average(kentik.snmp.MemoryUtilization)
+      from: Metric
+      where: "provider = 'kentik-versa'"
+
+# assumes an update to Nordstrom Versa SNMP profile to include activeSessions
+deviceActiveSessions:
+  title: Active sessions
+  unit: COUNT
+  queries:
+    # Versa devices from Kentik (ktranslate)
+    kentik/versa: # how/where is this defined?
+      select: sum(kentik.snmp.DeviceActiveSessions)
+      from: Metric
+      where: "provider = 'kentik-versa'"
