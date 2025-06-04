@@ -146,7 +146,7 @@
             "nrqlQueries": [
               {
                 "accountId": 0,
-                "query": "FROM VersaApplHealthSample SELECT average(vaApplHealth.sessload) AS 'Current Active Sessions'"
+                "query": "FROM VersaApplHealthSample SELECT latest(vaApplHealth.sessload) AS 'Current Active Sessions'"
               }
             ],
             "platformOptions": {
@@ -253,7 +253,7 @@
             "nrqlQueries": [
               {
                 "accountId": 0,
-                "query": "FROM VersaApplHealthSample SELECT average(vaApplHealth.sessload) AS 'Active Sessions Timeseries' TIMESERIES 5 MINUTES"
+                "query": "FROM VersaApplHealthSample SELECT latest(vaApplHealth.sessload) AS 'Active Sessions Timeseries' TIMESERIES 5 MINUTES"
               }
             ],
             "platformOptions": {
