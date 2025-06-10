@@ -20,6 +20,21 @@ synthesis:
     prefixedTags:
       tags.:
         ttl: PT4H
+  # Versa devices from JWN Metrics ETL process
+  - identifier: device_name
+    name: device_name
+    encodeIdentifierInGUID: true
+    conditions:
+    - attribute: provider
+      value: jwn-versa # identified in Nordstrom's Metrics ETL process
+    tags:
+      src_addr:
+        entityTagName: device_ip
+        multiValue: false
+    # Add a 4 hour ttl on all tags ingested in metric api using tags. prefix
+    prefixedTags:
+      tags.:
+        ttl: PT4H
   # Versa devices from ETL processes
   - identifier: device_name
     name: device_name

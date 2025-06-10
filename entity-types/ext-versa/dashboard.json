@@ -62,7 +62,7 @@
             "nrqlQueries": [
               {
                 "accountId": 0,
-                "query": "FROM VersaApplHealthSample SELECT latest(vaApplHealth.cpuload) AS 'Current CPU Utilization %'"
+                "query": "FROM Metric SELECT latest(versa.appliance.cpu_load_percent) AS 'Current CPU Utilization %'"
               }
             ],
             "platformOptions": {
@@ -104,7 +104,7 @@
             "nrqlQueries": [
               {
                 "accountId": 0,
-                "query": "FROM VersaApplHealthSample SELECT latest(vaApplHealth.memload) AS 'Current Memory Utilization %'"
+                "query": "FROM Metric SELECT latest(versa.appliance.memory_load_percent) AS 'Current Memory Utilization %'"
               }
             ],
             "platformOptions": {
@@ -146,7 +146,7 @@
             "nrqlQueries": [
               {
                 "accountId": 0,
-                "query": "FROM VersaApplHealthSample SELECT latest(vaApplHealth.sessload) AS 'Current Active Sessions'"
+                "query": "FROM Metric SELECT latest(versa.appliance.session_load_percent) AS 'Current Active Sessions'"
               }
             ],
             "platformOptions": {
@@ -185,7 +185,7 @@
             "nrqlQueries": [
               {
                 "accountId": 0,
-                "query": "FROM VersaApplHealthSample SELECT latest(vaApplHealth.cpuload) AS 'CPU Utilization Timeseries' TIMESERIES 5 MINUTES"
+                "query": "FROM Metric SELECT latest(versa.appliance.cpu_load_percent) AS 'CPU Utilization Timeseries' TIMESERIES 5 MINUTES"
               }
             ],
             "platformOptions": {
@@ -219,7 +219,7 @@
             "nrqlQueries": [
               {
                 "accountId": 0,
-                "query": "FROM VersaApplHealthSample SELECT latest(vaApplHealth.memload) AS 'Memory Utilization Timeseries' TIMESERIES 5 MINUTES"
+                "query": "FROM Metric SELECT latest(versa.appliance.memory_load_percent) AS 'Memory Utilization Timeseries' TIMESERIES 5 MINUTES"
               }
             ],
             "platformOptions": {
@@ -253,7 +253,7 @@
             "nrqlQueries": [
               {
                 "accountId": 0,
-                "query": "FROM VersaApplHealthSample SELECT latest(vaApplHealth.sessload) AS 'Active Sessions Timeseries' TIMESERIES 5 MINUTES"
+                "query": "FROM Metric SELECT latest(versa.appliance.session_load_percent) AS 'Active Sessions Timeseries' TIMESERIES 5 MINUTES"
               }
             ],
             "platformOptions": {
