@@ -1,0 +1,50 @@
+[
+    {
+        "name": "versa.cpu_load",
+        "type": "gauge",
+        "value": 85.5,
+        "timestamp": 1703001600000,
+        "attributes": {
+            "device_name": "versa-edge-01",
+            "location": "Seattle-DC1",
+            "tenant": "retail-network",
+            "source": "versa_analytics"
+        }
+    },
+    {
+        "name": "versa.memory_load",
+        "type": "gauge",
+        "value": 72.3,
+        "timestamp": 1703001600000,
+        "attributes": {
+            "device_name": "versa-edge-01",
+            "location": "Seattle-DC1",
+            "tenant": "retail-network",
+            "source": "versa_analytics"
+        }
+    },
+    {
+        "name": "versa.disk_load",
+        "type": "gauge",
+        "value": 45.8,
+        "timestamp": 1703001600000,
+        "attributes": {
+            "device_name": "versa-edge-01",
+            "location": "Seattle-DC1",
+            "tenant": "retail-network",
+            "source": "versa_analytics"
+        }
+    },
+    {
+        "name": "versa.session_load",
+        "type": "gauge",
+        "value": 234,
+        "timestamp": 1703001600000,
+        "attributes": {
+            "device_name": "versa-edge-01",
+            "location": "Seattle-DC1",
+            "tenant": "retail-network",
+            "source": "versa_analytics"
+        }
+    }
+]

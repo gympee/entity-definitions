@@ -61,7 +61,7 @@
             "nrqlQueries": [
               {
                 "accountId": 0,
-                "query": "FROM Metric SELECT latest(versa.appliance.session_load_percent) AS 'Session Load' WHERE entity.type = 'SD_WAN' SINCE 10 MINUTES AGO COMPARE WITH 1 DAY AGO"
+                "query": "FROM Metric SELECT latest(versa.session_load) AS 'Session Load' WHERE entity.type = 'SD_WAN' SINCE 10 MINUTES AGO COMPARE WITH 1 DAY AGO"
               }
             ],
             "platformOptions": {
@@ -98,7 +98,7 @@
             "nrqlQueries": [
               {
                 "accountId": 0,
-                "query": "FROM Metric SELECT latest(versa.appliance.disk_load_percent) AS 'Disk Load' TIMESERIES 5 MINUTES"
+                "query": "FROM Metric SELECT latest(versa.disk_load) AS 'Disk Load' TIMESERIES 5 MINUTES"
               }
             ],
             "platformOptions": {
@@ -141,7 +141,7 @@
             "nrqlQueries": [
               {
                 "accountId": 0,
-                "query": "FROM Metric SELECT latest(versa.appliance.cpu_load_percent) AS 'CPU Load' TIMESERIES 5 MINUTES"
+                "query": "FROM Metric SELECT latest(versa.cpu_load) AS 'CPU Load' TIMESERIES 5 MINUTES"
               }
             ],
             "platformOptions": {
@@ -184,7 +184,7 @@
             "nrqlQueries": [
               {
                 "accountId": 0,
-                "query": "FROM Metric SELECT latest(versa.appliance.memory_load_percent) AS 'Memory Load' TIMESERIES 5 MINUTES"
+                "query": "FROM Metric SELECT latest(versa.memory_load) AS 'Memory Load' TIMESERIES 5 MINUTES"
               }
             ],
             "platformOptions": {
