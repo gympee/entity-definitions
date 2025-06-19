@@ -3,7 +3,7 @@ cpuUtilization:
   unit: PERCENTAGE
   queries:
     jwn-versa:
-      select: versa.appliance.cpu_load_percent
+      select: versa.cpu_load
       from: Metric
 
 memoryUtilization:
@@ -11,7 +11,7 @@ memoryUtilization:
   unit: PERCENTAGE
   queries:
     jwn-versa:
-      select: versa.appliance.memory_load_percent
+      select: versa.memory_load
       from: Metric
 
 deviceActiveSessions:
@@ -19,5 +19,5 @@ deviceActiveSessions:
   unit: COUNT
   queries:
     jwn-versa:
-      select: versa.appliance.session_load_percent
+      select: versa.session_load
       from: Metric

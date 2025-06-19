@@ -8,7 +8,7 @@ synthesis:
     encodeIdentifierInGUID: true
     conditions:
     - attribute: provider
-      value: kentik-versa # identified in Nordstrom's versa snmp profile
+      value: kentik-versa
     tags:
       src_addr:
         entityTagName: device_ip
@@ -26,11 +26,8 @@ synthesis:
     encodeIdentifierInGUID: true
     conditions:
     - attribute: provider
-      value: jwn-versa # identified in Nordstrom's Metrics ETL process
+      value: jwn-versa
     tags:
-      src_addr:
-        entityTagName: device_ip
-        multiValue: false
     # Add a 4 hour ttl on all tags ingested in metric api using tags. prefix
     prefixedTags:
       tags.:
@@ -42,12 +39,7 @@ synthesis:
     conditions:
     - attribute: eventType
       prefix: Versa
-  tags: # these are very Nordstrom specific
-    location:
-    env:
-    app_id:
-    team_id:
-    tier:
+  tags:
 
 dashboardTemplates:
   newRelic:
