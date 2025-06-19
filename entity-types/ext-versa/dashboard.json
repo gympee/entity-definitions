@@ -1,22 +1,22 @@
 {
-  "name": "Versa Appliance",
+  "name": "versa entity dashboard template",
   "description": null,
   "pages": [
     {
-      "name": "Versa Appliance",
+      "name": "versa entity dashboard template",
       "description": null,
       "widgets": [
         {
-          "visualization": {
-            "id": "viz.billboard"
-          },
+          "title": "Summary",
           "layout": {
             "column": 1,
             "row": 1,
-            "height": 4,
-            "width": 3
+            "width": 2,
+            "height": 6
           },
-          "title": "Summary",
+          "visualization": {
+            "id": "viz.billboard"
+          },
           "rawConfiguration": {
             "dataFormatters": [
               {
@@ -29,117 +29,171 @@
                 "type": "decimal"
               }
             ],
-            "nrqlQueries": [
-              {
-                "accountId": 0,
-                "query": "FROM Metric SELECT latest(device_name) AS 'Device Name', latest(kentik.snmp.Uptime)/8640000 AS 'Uptime (Days)', latest(entity.type) AS 'Entity Type', latest(instrumentation.name) AS 'Ktranslate Profile', latest(timestamp) AS 'Last Update', latest(PollingHealth) AS 'Polling Health', if(latest(PollingHealth) = 'GOOD', '', latest(PollingHealthReason)) AS 'Health Reason'WHERE provider = 'kentik-versa'"
-              }
-            ],
-            "thresholds": []
-          }
-        },
-        {
-          "visualization": {
-            "id": "viz.billboard"
-          },
-          "layout": {
-            "column": 4,
-            "row": 1,
-            "height": 4,
-            "width": 3
-          },
-          "title": "Appliance Session Load",
-          "rawConfiguration": {
-            "dataFormatters": [],
-            "nrqlQueries": [
-              {
-                "accountId": 0,
-                "query": "FROM Metric SELECT latest(versa.session_load) AS 'Session Load' SINCE 10 MINUTES AGO COMPARE WITH 1 DAY AGO"
-              }
-            ],
-            "thresholds": []
-          }
-        },
-        {
-          "visualization": {
-            "id": "viz.area"
-          },
-          "layout": {
-            "column": 7,
-            "row": 1,
-            "height": 4,
-            "width": 6
-          },
-          "title": "Appliance Disk Load",
-          "rawConfiguration": {
-            "legend": {
-              "enabled": true
+            "facet": {
+              "showOtherSeries": false
             },
             "nrqlQueries": [
               {
                 "accountId": 0,
-                "query": "FROM Metric SELECT latest(versa.disk_load) AS 'Disk Load' TIMESERIES 5 MINUTES"
-              }
-            ]
-          }
-        },
-        {
-          "visualization": {
-            "id": "viz.line"
-          },
-          "layout": {
-            "column": 1,
-            "row": 5,
-            "height": 4,
-            "width": 6
-          },
-          "title": "Appliance CPU Load",
-          "rawConfiguration": {
-            "dataFormatters": [],
-            "legend": {
-              "enabled": true
-            },
-            "nrqlQueries": [
-              {
-                "accountId": 0,
-                "query": "FROM Metric SELECT max(versa.cpu_load) AS 'CPU Load' TIMESERIES 5 MINUTES"
+                "query": "FROM Metric SELECT latest(device_name) AS 'Device Name', latest(kentik.snmp.Uptime)/8640000 AS 'Uptime (Days)', latest(entity.type) AS 'Entity Type', latest(instrumentation.name) AS 'Ktranslate Profile', latest(timestamp) AS 'Last Update', latest(PollingHealth) AS 'Polling Health', if(latest(PollingHealth) = 'GOOD', '', latest(PollingHealthReason)) AS 'Health Reason' WHERE provider = 'kentik-sd-wan'"
               }
             ],
-            "yAxisLeft": {
-              "max": 100,
-              "min": 0,
-              "zero": true
+            "platformOptions": {
+              "ignoreTimeRange": false
             }
           }
         },
         {
+          "title": "Total Active Sessions",
+          "layout": {
+            "column": 3,
+            "row": 1,
+            "width": 5,
+            "height": 2
+          },
+          "visualization": {
+            "id": "viz.billboard"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 0,
+                "query": "FROM Metric SELECT latest(versa.appliance.session_load_percent) AS 'Session Load' WHERE entity.type = 'SD_WAN' SINCE 10 MINUTES AGO COMPARE WITH 1 DAY AGO"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            }
+          }
+        },
+        {
+          "title": "Appliance Disk Load",
+          "layout": {
+            "column": 8,
+            "row": 1,
+            "width": 5,
+            "height": 2
+          },
           "visualization": {
             "id": "viz.line"
           },
-          "layout": {
-            "column": 7,
-            "row": 5,
-            "height": 4,
-            "width": 6
-          },
-          "title": "Appliance Memory Load",
           "rawConfiguration": {
-            "dataFormatters": [],
             "facet": {
               "showOtherSeries": false
             },
             "legend": {
               "enabled": true
             },
+            "markers": {
+              "displayedTypes": {
+                "criticalViolations": false,
+                "deployments": true,
+                "relatedDeployments": true,
+                "warningViolations": false
+              }
+            },
             "nrqlQueries": [
               {
                 "accountId": 0,
-                "query": "FROM Metric SELECT (max(versa.memory_load) AS 'Memory Load' TIMESERIES 5 MINUTES"
+                "query": "FROM Metric SELECT latest(versa.appliance.disk_load_percent) AS 'Disk Load' TIMESERIES 5 MINUTES"
               }
             ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
             "yAxisLeft": {
-              "max": 100,
-              "min": 0,
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Appliance CPU Load",
+          "layout": {
+            "column": 3,
+            "row": 3,
+            "width": 5,
+            "height": 4
+          },
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "markers": {
+              "displayedTypes": {
+                "criticalViolations": false,
+                "deployments": true,
+                "relatedDeployments": true,
+                "warningViolations": false
+              }
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 0,
+                "query": "FROM Metric SELECT latest(versa.appliance.cpu_load_percent) AS 'CPU Load' TIMESERIES 5 MINUTES"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
+              "zero": true
+            }
+          }
+        },
+        {
+          "title": "Appliance Memory Load",
+          "layout": {
+            "column": 8,
+            "row": 3,
+            "width": 5,
+            "height": 4
+          },
+          "visualization": {
+            "id": "viz.line"
+          },
+          "rawConfiguration": {
+            "facet": {
+              "showOtherSeries": false
+            },
+            "legend": {
+              "enabled": true
+            },
+            "markers": {
+              "displayedTypes": {
+                "criticalViolations": false,
+                "deployments": true,
+                "relatedDeployments": true,
+                "warningViolations": false
+              }
+            },
+            "nrqlQueries": [
+              {
+                "accountId": 0,
+                "query": "FROM Metric SELECT latest(versa.appliance.memory_load_percent) AS 'Memory Load' TIMESERIES 5 MINUTES"
+              }
+            ],
+            "platformOptions": {
+              "ignoreTimeRange": false
+            },
+            "yAxisLeft": {
+              "zero": true
+            },
+            "yAxisRight": {
               "zero": true
             }
           }
